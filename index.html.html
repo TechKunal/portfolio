@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kunal - Freelance Video Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Red and Cream -->
+    <!-- Application Structure Plan: A single-page, top-to-bottom scrolling portfolio. The structure is designed for a recruiter or potential client's journey: 1. Hero (immediate impact with bio & CTA), 2. About (deeper dive into personality and skills), 3. Portfolio (core evidence of work, with interactive filters for usability), 4. Services/Skills (clear summary of capabilities), 5. Contact (final call-to-action). This linear flow is intuitive and ensures all key information is presented logically without overwhelming the user. -->
+    <!-- Visualization & Content Choices: The portfolio gallery is the main 'visualization'. Goal: Showcase work. Method: HTML/Tailwind Grid. Interaction: JS-powered buttons to filter projects by category ('All', 'Short-Form', 'Long-Form'). Justification: Filtering allows users to quickly find relevant examples of the editor's work, improving usability. No complex charts are needed; the focus is on the video content itself. Embedded video players would be used in a real scenario, but placeholders are used here. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FEFBEB; /* Cream background */
+            color: #44403c; /* Dark stone text */
+        }
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+        .portfolio-item .overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .filter-btn.active {
+            background-color: #B91C1C; /* Red-700 */
+            color: #ffffff;
+        }
+        #hero {
+            position: relative;
+            background-image: url('video-editing-beginner.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(30, 20, 20, 0.7); /* A dark reddish overlay */
+        }
+        #hero .container {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-[#FEFBEB]/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-stone-800">Kunal</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-stone-600 hover:text-red-700 transition duration-300">About</a>
+                <a href="#portfolio" class="text-stone-600 hover:text-red-700 transition duration-300">Portfolio</a>
+                <a href="#contact" class="bg-red-700 text-white px-4 py-2 rounded-md hover:bg-red-800 transition duration-300">Contact Me</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-stone-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 text-stone-600 hover:text-red-700">About</a>
+            <a href="#portfolio" class="block py-2 text-stone-600 hover:text-red-700">Portfolio</a>
+            <a href="#contact" class="block mt-2 bg-red-700 text-white text-center px-4 py-2 rounded-md hover:bg-red-800">Contact Me</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative text-white">
+            <div class="hero-overlay"></div>
+            <div class="container mx-auto px-6 py-24 md:py-32 text-center relative z-10">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">Crafting Compelling Stories Through Video</h1>
+                    <p class="text-lg md:text-xl text-stone-200 max-w-3xl mx-auto">
+                        Freelance video editor with 4 years of experience, partnering with 3+ digital marketing agencies and delivering results for over 40+ clients. I transform ideas into visually stunning stories that capture attention and drive engagement.
+                    </p>
+                    <div class="mt-10 flex justify-center gap-4">
+                        <a href="#portfolio" class="bg-red-700 text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-red-800 transition duration-300">View My Work</a>
+                        <a href="#contact" class="bg-white/90 text-stone-800 px-8 py-3 rounded-md text-lg font-semibold border border-transparent hover:bg-white transition duration-300">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="bg-white py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-5 gap-12 items-center">
+                    <div class="md:col-span-2">
+                         <img src="WhatsApp Image 2025-09-30 at 2.59.18 PM.jpeg" alt="Portrait of the video editor Kunal" class="rounded-lg shadow-lg w-full">
+                    </div>
+                    <div class="md:col-span-3">
+                        <h2 class="text-3xl font-bold text-stone-900 mb-4">About Me</h2>
+                        <div class="text-stone-600 space-y-4">
+                            <p>
+                                Hello! I'm Kunal, a freelance video editor with four years of dedicated experience bringing stories to life. I've had the privilege of working with over 3 digital marketing companies and more than 40 individual clients, delivering high-quality video content that meets their strategic goals. My journey in post-production has equipped me with a versatile skill set, allowing me to excel in creating everything from snappy, attention-grabbing short-form videos to comprehensive, narrative-driven long-form content.
+                            </p>
+                            <p>
+                                I am highly proficient with the industry-standard Adobe Creative Suite, including Premiere Pro and After Effects, as well as DaVinci Resolve for advanced color grading and finishing. This technical expertise allows me to focus on what truly matters: the story. I believe that every cut, transition, and sound cue should serve the narrative, creating a seamless and immersive experience for the viewer.
+                            </p>
+                            <p>
+                                If you're looking for a reliable, creative, and detail-obsessed editor to elevate your next project, let's connect.
+                            </p>
+                        </div>
+                         <div class="mt-8">
+                            <h3 class="text-xl font-bold text-stone-800 mb-3">My Tools</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="bg-stone-200 text-stone-700 px-3 py-1 rounded-full text-sm font-medium">Adobe Premiere Pro</span>
+                                <span class="bg-stone-200 text-stone-700 px-3 py-1 rounded-full text-sm font-medium">Adobe After Effects</span>
+                                <span class="bg-stone-200 text-stone-700 px-3 py-1 rounded-full text-sm font-medium">DaVinci Resolve</span>
+                                <span class="bg-stone-200 text-stone-700 px-3 py-1 rounded-full text-sm font-medium">Color Grading</span>
+                                <span class="bg-stone-200 text-stone-700 px-3 py-1 rounded-full text-sm font-medium">Sound Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-stone-900">My Portfolio</h2>
+                    <p class="text-lg text-stone-600 mt-2">A selection of my recent work.</p>
+                </div>
+                
+                <!-- Filter Buttons -->
+                <div class="flex justify-center flex-wrap gap-4 mb-12" id="filter-buttons">
+                    <button class="filter-btn active px-5 py-2 rounded-md font-medium transition duration-300" data-filter="all">All</button>
+                    <button class="filter-btn px-5 py-2 rounded-md font-medium transition duration-300 hover:bg-red-100" data-filter="short-form">Short-Form</button>
+                    <button class="filter-btn px-5 py-2 rounded-md font-medium transition duration-300 hover:bg-red-100" data-filter="long-form">Long-Form</button>
+                    <button class="filter-btn px-5 py-2 rounded-md font-medium transition duration-300 hover:bg-red-100" data-filter="corporate">Corporate</button>
+                </div>
+
+                <!-- Portfolio Grid -->
+                <div id="portfolio-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Portfolio items will be injected here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-stone-900 text-white py-20 md:py-28">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold">Ready to Create Something Amazing?</h2>
+                <p class="text-lg text-stone-300 mt-4 max-w-2xl mx-auto">I'm currently available for freelance projects. Let's discuss how I can help bring your vision to life.</p>
+                <div class="mt-8 flex flex-wrap justify-center items-center gap-6">
+                    <a href="mailto:techkunalofficial18@gmail.com" class="bg-red-600 text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-red-700 transition duration-300">Email Me</a>
+                    <a href="tel:+916239003154" class="bg-stone-700 text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-stone-600 transition duration-300">Call Me (+91 6239003154)</a>
+                    <a href="https://www.instagram.com/akazaamv" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white px-8 py-3 rounded-md text-lg font-semibold hover:opacity-90 transition duration-300">Instagram (@akazaamv)</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="bg-stone-700 text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-stone-600 transition duration-300">Website</a>
+                </div>
+                <p class="mt-6 text-stone-400">Based in Prayagraj, Uttar Pradesh, India</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-transparent py-6">
+        <div class="container mx-auto px-6 text-center text-stone-500">
+             <div class="flex justify-center items-center space-x-4 mb-4">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="text-stone-500 hover:text-red-600 transition duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                </a>
+                <a href="https://www.instagram.com/akazaamv" target="_blank" rel="noopener noreferrer" class="text-stone-500 hover:text-pink-500 transition duration-300">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+            <p>&copy; 2024 Kunal. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when a link is clicked
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+
+            // Portfolio Filtering
+            const portfolioItems = [
+                { title: 'Honda Accord Cinematic', category: 'short-form', videoSrc: 'Car.mp4' },
+                { title: 'Magnitude 2023 Event Promo', category: 'long-form', videoSrc: 'Magnitude 2.mp4' },
+                { title: 'Freshmen Talent Search LPU', category: 'corporate', videoSrc: 'FTS PROMO LPU.mp4' },
+                { title: 'IGC 2024 Promo', category: 'long-form', videoSrc: 'IGC PROMO 1_.mp4' },
+                { title: 'Chilly Chicken Food Promo', category: 'short-form', videoSrc: 'Chilly Chicken.mp4' },
+                { title: 'Creamy Pasta Food Promo', category: 'short-form', videoSrc: 'Hops 2_2.mp4' },
+                { title: 'Pizza Making Promo', category: 'short-form', videoSrc: 'Hops 4.mp4' },
+                { title: 'Garlic Bread Promo', category: 'short-form', videoSrc: 'hops 3_2.mp4' },
+                { title: 'Social Commentary Reel', category: 'short-form', videoSrc: 'Project 2_1.mp4' },
+                { title: 'Flipkart AI+ Smartphone Ad', category: 'corporate', videoSrc: 'its vivek buddy.mp4' },
+                { title: 'Political Commentary Reel', category: 'short-form', videoSrc: 'Project 19.mp4' },
+                { title: 'Flipkart Unique Ad', category: 'corporate', videoSrc: '1.mp4' },
+                { title: 'Astrology Reel', category: 'short-form', videoSrc: 'Nazar Dosh.mp4' },
+                { title: 'One Day CM Reel', category: 'short-form', videoSrc: 'Project 37.mp4' },
+                { title: 'Sony Telecom Ad', category: 'corporate', videoSrc: 'Sony telecom.mp4' },
+                { title: 'Ricky Mobile Store Ad', category: 'corporate', videoSrc: 'ricky mobile store.mp4' },
+                { title: 'YouTube Documentary Ep. 1', category: 'long-form', img: 'https://placehold.co/600x400/64748b/ffffff?text=Long+Form+1' },
+            ];
+
+            const portfolioGrid = document.getElementById('portfolio-grid');
+            const filterButtonsContainer = document.getElementById('filter-buttons');
+
+            const renderPortfolio = (filter = 'all') => {
+                portfolioGrid.innerHTML = '';
+                const filteredItems = filter === 'all' 
+                    ? portfolioItems 
+                    : portfolioItems.filter(item => item.category === filter);
+
+                filteredItems.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'portfolio-item relative overflow-hidden rounded-lg shadow-lg group cursor-pointer bg-stone-800 aspect-video';
+                    
+                    let mediaElement;
+                    if (item.videoSrc) {
+                        mediaElement = `<video src="${item.videoSrc}" class="w-full h-full object-contain" controls></video>`;
+                    } else if (item.img) {
+                        mediaElement = `<img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">`;
+                    }
+
+                    itemElement.innerHTML = `
+                        ${mediaElement}
+                        <div class="overlay absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+                            <div class="text-center text-white p-4">
+                                <h3 class="text-xl font-bold">${item.title}</h3>
+                                <p class="text-sm uppercase tracking-wider mt-1">${item.category.replace('-', ' ')}</p>
+                            </div>
+                        </div>
+                    `;
+                    portfolioGrid.appendChild(itemElement);
+                });
+            };
+
+            filterButtonsContainer.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    const filter = e.target.getAttribute('data-filter');
+                    
+                    // Update active button style
+                    const currentActive = filterButtonsContainer.querySelector('.active');
+                    if (currentActive) {
+                        currentActive.classList.remove('active', 'bg-red-700', 'text-white');
+                        currentActive.classList.add('hover:bg-red-100');
+                    }
+
+                    e.target.classList.add('active', 'bg-red-700', 'text-white');
+                    e.target.classList.remove('hover:bg-red-100');
+                    
+                    renderPortfolio(filter);
+                }
+            });
+
+            // Initial render
+            renderPortfolio();
+        });
+    </script>
+</body>
+</html>
+
